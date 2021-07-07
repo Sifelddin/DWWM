@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>dictionnaire de données</title>
+</head>
+<body>
+    <div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">N°</th>
+            <th scope="col">Code</th>
+            <th scope="col">Description</th>
+            <th scope="col">type et longueur</th>
+            <th scope="col">Obsarvation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><th colspan="5"> produits</th></tr>
+        <tr>
+            <td>1</td>
+            <td>pro_id</td>
+            <td>product identifier </td>
+            <td>INT auto</td>
+            <td>produit identifiant</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>pro_price</td>
+            <td>product price </td>
+            <td>decimal(6,2)</td>
+            <td>prix hors taxes</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>pro_phy_stk</td>
+            <td>product physical stock  </td>
+            <td>INT(2,0)</td>
+            <td></td>
+        </tr>
+     
+        <tr>
+            <td>4</td>
+            <td>pro_ale_stk</td>
+            <td>product alert stock  </td>
+            <td>INT(2,0)</td>
+            <td></td>
+        </tr>
+     
+        <tr>
+            <td>5</td>
+            <td>pro_inter_ref</td>
+            <td>product internal reference </td>
+            <td>varchar(20)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>pro_EAN</td>
+            <td>product European Article Numbering  </td>
+            <td>varchar(20)</td>
+            <td>code-barre</td>
+        </tr>
+     
+        <tr>
+            <td>7</td>
+            <td>pro_color</td>
+            <td>product color </td>
+            <td>varchar(20)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>pro_word</td>
+            <td>product wording </td>
+            <td>varchar(20)</td>
+            <td></td>
+        </tr>
+     
+        <tr>
+            <td>9</td>
+            <td>pro_discription</td>
+            <td>product discription </td>
+            <td>text</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>pro_add_date</td>
+            <td>product add date </td>
+            <td>date</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>pro_modi_date</td>
+            <td>product modify date </td>
+            <td>date</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>pro_f_phot_name</td>
+            <td>product file photo name </td>
+            <td>varchar(50)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>pro_be_on_s</td>
+            <td>product be on sale </td>
+            <td>boolean</td>
+            <td>0(non) ou 1(en vente)</td>
+        </tr>
+     <tr><th colspan="5"> catigorie</th></tr>
+         <tr>
+            <td>1</td>
+            <td>cat_id</td>
+            <td>category identifier </td>
+            <td>INT</td>
+            <td>catigorie identifiant</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>cat_name</td>
+            <td>category name </td>
+            <td>varchar(50)</td>
+            <td>catigorie nom</td>
+         </tr>
+     <tr><th colspan="5">sous-catigorie</th></tr>
+         <tr>
+            <td>1</td>
+            <td>subcat_id</td>
+            <td> subcategory identifier </td>
+            <td>INT</td>
+            <td>sous-catigorie identifiant</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>subcat_name</td>
+            <td>subcategory name </td>
+            <td>varchar(50)</td>
+            <td>sous-catigorie nom</td>
+         </tr>
+     <tr><th colspan="5">suppliers</th></tr>
+         <tr>
+            <td>1</td>
+            <td>sup_id</td>
+            <td> supplier identifier </td>
+            <td>INT</td>
+            <td>fournisseur identifiant</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>sup_comer</td>
+            <td>supplier commercial </td>
+            <td>varchar(50)</td>
+            <td></td>
+         </tr>
+     <tr><th colspan="5">client</th></tr>
+         <tr>
+            <td>1</td>
+            <td>cli_id</td>
+            <td> client identifier </td>
+            <td>INT</td>
+            <td>client identifiant</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>cli_f_name</td>
+            <td>client first name </td>
+            <td>varchar(50)</td>
+            <td></td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>cli_la_name</td>
+            <td>client last name </td>
+            <td>varchar(50)</td>
+            <td></td>
+         </tr>
+         <tr>
+            <td>4</td>
+            <td>cli_adress</td>
+            <td>client adress </td>
+            <td>varchar(70)</td>
+            <td></td>
+         </tr>
+         <tr>
+            <td>5</td>
+            <td>cli_email</td>
+            <td>client email </td>
+            <td>varchar(255)</td>
+            <td></td>
+         </tr>
+         <tr>
+            <td>6</td>
+            <td>cli_ph_nb</td>
+            <td>client phone number </td>
+            <td>varchar(30)</td>
+            <td></td>
+         </tr>
+         <tr>
+            <td>7</td>
+            <td>cli_pw</td>
+            <td>client password </td>
+            <td>varchar(255)</td>
+            <td></td>
+         </tr>
+         <tr>
+            <td>8</td>
+            <td>cli_d_add</td>
+            <td>client add date </td>
+            <td>date</td>
+            <td></td>
+         </tr>
+         <tr>
+            <td>9</td>
+            <td>cli_modi_add</td>
+            <td>client modify date </td>
+            <td>date</td>
+            <td></td>
+         </tr>
+         <tr><th colspan="5">orders</th></tr>
+         <tr>
+            <td>1</td>
+            <td>order_id</td>
+            <td> order identifier </td>
+            <td>INT</td>
+            <td>command identifiant</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>sup_comer</td>
+            <td>supplier commercial </td>
+            <td>varchar(50)</td>
+            <td></td>
+         </tr>
+    </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
