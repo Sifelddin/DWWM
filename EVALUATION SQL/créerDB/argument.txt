@@ -1,0 +1,11 @@
+
+
+1- pour remplire les tables de la base de données on doit remplire d'abord les tables parents ensuite :
+2 -les tables qui contiennent les clés étrangères et géneralement on commence par les tables qui contiennent 
+un clé étrangère plutôt que deux
+
+dans cette base des données l'order de remplire commence par:
+
+1 - tables parents:  categories , posts, countries
+2 - tables enfants avec une clé étrangère: employees , suppliers, customers, orders
+3 - tables enfants avec deux clés étrangère: products , orders_details, 
