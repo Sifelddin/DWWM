@@ -14,7 +14,8 @@ INSERT INTO posts (pos_libelle) VALUES ('particulier'), ('professionnel');
 
 INSERT INTO employees (emp_superior_id,emp_pos_id,emp_lastname,emp_firstname,emp_address,emp_zipcode,emp_city,emp_mail,emp_phone,emp_salary,emp_enter_date,emp_gender,emp_children)
 VALUES (NULL,1,'quincy','Doe','78 rue du nord', '78500','newcity','Doe@gmail.com',0775298254,3500,'2015/03/01','h',2),
- (1,2,'larson','joe','17 rue du sud', '16500','oldcity','joe@gmail.com',0775300254,3500,'2014/03/01','h',0);
+ (1,2,'larson','joe','17 rue du sud', '16500','oldcity','joe@gmail.com',0775300254,3500,'2014/03/01','h',0),
+ (2,3,'Nowara','lorem','16 route du sud', '76500','canteleu','joe@gmail.com',0772200054,4000,'2011/02/20','f',1);
 
 
 

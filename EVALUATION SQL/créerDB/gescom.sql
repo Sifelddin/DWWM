@@ -11,14 +11,30 @@ CREATE TABLE category(
     cat_name VARCHAR (90) NOT NULL UNIQUE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create TABLE subcategory(
-   subcat_id INT (10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   subcat_name varchar(90) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE countries(
     cou_id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     cou_name VARCHAR(50) NOT NULL UNIQUE 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE shops_empl (
+    shop_id INT UNSIGNED NOT NULL PRIMARY KEY,
+    shop_name VARCHAR (50) NOT NULL,
+    shop_address VARCHAR (255) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE post (
+    post_id INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    post_name VARCHAR (50)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+create TABLE subcategory(
+   subcat_id INT (10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   subcat_name varchar(90) NOT NULL,
+   subcat_cat_id INT (10) UNSIGNED NOT NULL ,
+   CONSTRAINT FOREIGN KEY (subcat_cat_id) REFERENCES category(cat_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE suppliers(
@@ -89,16 +105,6 @@ CREATE TABLE order_details(
     ord_pro_id INT UNSIGNED NOT null,
     CONSTRAINT FOREIGN KEY (ord_ord_id) REFERENCES orders(ord_id),
     CONSTRAINT FOREIGN KEY (ord_pro_id) REFERENCES products(pro_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE shops_empl (
-    shop_id INT UNSIGNED NOT NULL PRIMARY KEY,
-    shop_name VARCHAR (50) NOT NULL,
-    shop_address VARCHAR (255) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-CREATE TABLE post (
-    post_id INT (10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    post_name VARCHAR (50)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
