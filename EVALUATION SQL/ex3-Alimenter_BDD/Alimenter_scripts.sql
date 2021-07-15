@@ -10,7 +10,7 @@ INSERT INTO categories (cat_name, cat_parent_id) VALUES
 
 ('Outillage manuel',1),('Outillage mécanique',2),('Plants et semis',NULL),('Arbres et arbustes',4),('Pots et accessoires',NULL);
 
-INSERT INTO posts (pos_libelle) VALUES ('particulier'), ('professionnel');
+INSERT INTO posts (pos_libelle) VALUES ('Assistant(e) comptable'), ('Manager'),('Président_Directeur Général'),('Commercial(e)');
 
 INSERT INTO employees (emp_superior_id,emp_pos_id,emp_lastname,emp_firstname,emp_address,emp_zipcode,emp_city,emp_mail,emp_phone,emp_salary,emp_enter_date,emp_gender,emp_children)
 VALUES (NULL,1,'quincy','Doe','78 rue du nord', '78500','newcity','Doe@gmail.com',0775298254,3500,'2015/03/01','h',2),
