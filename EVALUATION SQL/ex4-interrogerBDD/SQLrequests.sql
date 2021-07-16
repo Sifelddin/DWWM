@@ -128,4 +128,5 @@ UPDATE products JOIN categories ON cat_id = pro_cat_id SET pro_price = pro_price
 --Q20. Supprimer les produits non vendus de la catégorie "Tondeuses électriques". Vous devez utiliser une sous-requête sans indiquer de valeurs de clés.
 
 DELETE products FROM products JOIN categories ON cat_id = pro_cat_id 
-WHERE products.pro_id NOT IN ( SELECT orders_details.ode_pro_id FROM orders_details) AND cat_name = 'Tondeuses électriques';
+WHERE products.pro_id
+NOT IN ( SELECT orders_details.ode_pro_id FROM orders_details) AND cat_name = 'Tondeuses électriques';
