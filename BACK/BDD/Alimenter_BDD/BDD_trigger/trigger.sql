@@ -1,4 +1,4 @@
-
+--Phase 1 - Bien débuter avec les déclencheurs
 --insert trigger
 CREATE DEFINER=`root`@`localhost` TRIGGER `insert_total`
  AFTER INSERT ON `lignedecommande` FOR EACH ROW UPDATE commande 
@@ -25,15 +25,20 @@ FROM lignedecommande  WHERE id = id_commande)
 
 
 
- --
+ --Phase 2 - Les déclencheurs
+ DROP TRIGGER  after_products_update 
  DELIMITER $$
- CREATE trigger after_products_update 
-AFTER UPDATE on products for each row 
+ CREATE trigger after_products_update AFTER UPDATE on products for each row 
+
 begin
 
-IF new.pro_stock < new.pro_stock_alert THEN
-INSERT INTO commander_articles (codArt,qte) 
-VALUES (pro_id, new.pro_stock - new.pro_stock_alert );
+IF NEW.pro_stock < old.pro_stock_alert THEN
+IF (SELECT codart from commander_articles join products on codart = pro_id WHERE codart = new.pro_id) IS NULL THEN
+INSERT INTO commander_articles (codart,qte) 
+VALUES (old.pro_id, old.pro_stock_alert - NEW.pro_stock );
+ELSE 
+UPDATE commander_articles SET qte = old.pro_stock_alert - NEW.pro_stock ;
+END IF;
 END IF;
 END$$
 DELIMITER ;
