@@ -24,8 +24,7 @@ WHERE ord_id = p_ord_num
 GROUP BY ord_id,pro_name,ord_order_date,ord_status,ode_unit_price,ode_quantity,ode_discount;
 ELSE 
 
-SELECT SUM(ode_discount) ,SUM(ode_quantity), SUM(ode_unit_price), COUNT(ode_unit_price),ord_order_date AS order_date,ode_ord_id, SUM(ode_unit_price * ode_quantity - ode_discount) INTO
-
+SELECT SUM(ode_discount) ,SUM(ode_quantity), SUM(ode_unit_price), COUNT(ode_unit_price),ord_order_date ,ode_ord_id, SUM(ode_unit_price * ode_quantity - ode_discount) INTO
  p_total_discount,p_total_quantity,p_units_price,p_pro_total, p_order_date,p_ord_num, p_TOTAL  FROM orders_details,orders WHERE
 ord_id = ode_ord_id  AND ode_ord_id = p_ord_num;
  END IF;
@@ -56,27 +55,48 @@ CREATE TABLE `commander_articles` (
 
 
 
-
-
  DROP TRIGGER IF EXISTS after_products_update 
  DELIMITER $$
  CREATE trigger after_products_update AFTER UPDATE on products for each row 
 
 begin
 
-IF NEW.pro_stock <= old.pro_stock_alert THEN
-IF (SELECT codart from commander_articles join products on codart = pro_id WHERE codart = new.pro_id) IS NULL THEN
+IF NEW.pro_stock <= old.pro_stock_alert AND
+ (SELECT codart from commander_articles join products on codart = pro_id WHERE codart = new.pro_id) IS NULL THEN
+
+
 INSERT INTO commander_articles (codart,qte) 
 VALUES (old.pro_id, old.pro_stock_alert - NEW.pro_stock );
-ELSE IF NEW.pro_stock > old.pro_stock_alert THEN
-UPDATE commander_articles SET qte = 0;
+
+
+ELSE IF NEW.pro_stock > old.pro_stock_alert AND 
+(SELECT codart from commander_articles join products on codart = pro_id WHERE codart = new.pro_id) IS NOT NULL THEN
+
+UPDATE commander_articles SET qte = 0 WHERE codart = new.pro_id;
+
+
 ELSE
-UPDATE commander_articles SET qte = old.pro_stock_alert - NEW.pro_stock ;
-END IF;
+UPDATE commander_articles SET qte = old.pro_stock_alert - NEW.pro_stock WHERE codart = new.pro_id ;
 END IF;
 END IF;
 END$$
 DELIMITER ;
 
+
+
+-----------------------------------------------------------------------------------------------------
+--EXERCICE 4 
+--Transactions
+-- create user
+CREATE USER 'retraite'@'%' IDENTIFIED BY '';
+GRANT SELECT , INSERT ON gescom_afpa.posts to `retraite`
+
+--ajouter un champ qui contient le nom d'employé qui va sortir en retraite pour  dans la mème ligne avec son ancien poste
+--à chaque fois un employé sort en retraite on fait update sur la ligne ou se trouve son ancien poste pour rajouter son nom
+
+START TRANSACTION;
+ALTER TABLE `posts` ADD `ancien_coll` VARCHAR(55) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ;
+update posts SET ancien_coll = 'HANAH' WHERE pos_id = 1 limit  1 ;
+COMMIT;
 
 

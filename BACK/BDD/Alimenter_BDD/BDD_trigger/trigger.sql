@@ -26,7 +26,7 @@ FROM lignedecommande  WHERE id = id_commande)
 
 
  --Phase 2 - Les déclencheurs
- DROP TRIGGER  after_products_update 
+ DROP TRIGGER IF EXISTS after_products_update 
  DELIMITER $$
  CREATE trigger after_products_update AFTER UPDATE on products for each row 
 
