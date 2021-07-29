@@ -68,7 +68,7 @@ try {
                 <td class="align-middle"><?= $val->pro_couleur ?></td>
                 <td class="align-middle"><?= $val->pro_d_ajout ?></td>
                 <td class="align-middle"><?= $val->pro_d_modif ?></td>
-                <td class="align-middle"><?= $val->pro_bloque ?></td>
+                <td class="align-middle"><?php if($val->pro_bloque == 0 || $val->pro_bloque == NULL){echo "non";}else{echo "oui";}?></td>
               </tr>
             <?php endforeach ?>
 

@@ -107,9 +107,10 @@ if (isset($_GET["pro_id"])) {
             <br>
         </div>
 
-        <a href="../tableau.php"><input class="px-4 mx-5 btn btn-secondary" name="submit" value="Routeur"></a>
-        <a href="delete.php?pro_id=<?= htmlentities($row->pro_id) ?>"><input class="px-4 mx-5 btn btn-danger" name="supprimer" value="Suppression"></a>
-        <a href="modif_form.php?pro_id=<?= htmlentities($row->pro_id) ?>"><input class="px-4 mx-5 btn btn-warning" name="modifier" value="Modification"></a>
+        <a href="../tableau.php"><input class="px-4 mx-2 btn btn-secondary" name="submit" value="Routeur"></a>
+        <a href="delete.php?pro_id=<?= htmlentities($row->pro_id) ?>"><input class="px-4 mx-2 btn btn-danger" name="supprimer" value="Suppression"></a>
+        <a href="modif_form.php?pro_id=<?= htmlentities($row->pro_id) ?>"><input class="px-4 mx-2 btn btn-warning" name="modifier" value="Modification"></a>
+        <a href="upload_img.php?pro_id=<?= htmlentities($row->pro_id) ?>"><input class="px-4 mx-2 btn btn-primary" name="ajout_img" value="ajout_img"></a>
 
     </form>
     <br>

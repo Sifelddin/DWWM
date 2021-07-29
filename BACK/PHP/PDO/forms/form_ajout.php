@@ -74,13 +74,9 @@ if ($error) {
             </div>
 
             <br>
-            <div>
-                <label>"pro_photo"- Extension de la Photo :</label><br>
-                <input class="form-control" type="text" value="jpg" name="photo" readonly>
-                <small  class="text-danger"><?=$message_photo ?></small >
-            </div>
+           
 
-            <br>
+          
             <div>
                 <label>"pro_d_ajout"- Date d'ajout :</label><br>
                 <input class="form-control" type="date" value="" name="date-Ajout" readonly>
@@ -100,6 +96,7 @@ if ($error) {
             <br>
             <input type="submit" class="btn btn-success" name="submit" value="Ajouter">
             <a href="../tableau.php"><input class="btn btn-secondary" name="routeur" value="Routeur"></a>
+        </div>
     </form>
 </div>
 

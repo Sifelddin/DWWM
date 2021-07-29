@@ -12,8 +12,7 @@ try {
         check_error_ajout("libelle");
         check_error_ajout("prix");
         check_error_ajout("stock");
-        check_error_ajout("photo");
-     
+      
 
         $categorie = $_POST["cat_id"];
         $ref = $_POST['ref'];
@@ -22,7 +21,6 @@ try {
         $prix = $_POST['prix'];
         $stock = $_POST['stock'];
         $couleur = $_POST['couleur'];
-        $photo = $_POST['photo'];
         $date_ajout = $_POST['date-Ajout'];
         $date_modif = $_POST['date-modif'];
         $pro_bloque = $_POST['pro-bloque'];
@@ -32,7 +30,6 @@ try {
         $request = $db->prepare('INSERT INTO produits (pro_cat_id,pro_ref,pro_libelle,pro_description,pro_prix,pro_stock,pro_couleur,pro_photo,pro_d_ajout,pro_d_modif,pro_bloque)
          VALUES (:pro_cat_id,:pro_ref,:pro_libelle,:pro_description,:pro_prix,:pro_stock,:pro_couleur,:pro_photo,:pro_d_ajout,:pro_d_modif,:pro_bloque)');
         $request->execute([
-
             'pro_cat_id' => $categorie,
             'pro_ref' => $ref,
             'pro_libelle' => $libelle,
@@ -40,20 +37,39 @@ try {
             'pro_prix' => $prix,
             'pro_stock' => $stock,
             'pro_couleur' => $couleur,
-            'pro_photo' => $photo,
+            'pro_photo' => NULL,
             'pro_d_ajout' => date("Y-m-d H:i:s"),
             'pro_d_modif' => NULL,
             'pro_bloque' => $pro_bloque
-
         ]);
+
+        $req_id = $db->prepare("SELECT pro_id from produits
+         where  pro_cat_id = :categorie AND pro_ref = :ref AND pro_libelle = :libelle
+          AND pro_description = :_description AND  pro_prix = :prix AND pro_stock = :stock AND pro_couleur = :couleur
+          AND pro_bloque = :bloque");
+        $req_id->execute([
+            'categorie' => $categorie,
+            'ref' => $ref,
+            'libelle' => $libelle,
+            '_description' => $description,
+            'prix' => $prix,
+            'stock' => $stock,
+            'couleur' => $couleur,
+            'bloque' => $pro_bloque
+        ]);
+        $row = $req_id->fetch(); 
+
     }
 } catch (PDOException $e) {
     $error = $e->getMessage();
 }
-
 if ($error) {
     echo $error;
 } else {
 
-    header("Location:../tableau.php");
+
+
+
+
+  header("Location:../forms/upload_img.php?pro_id=$row->pro_id");
 }

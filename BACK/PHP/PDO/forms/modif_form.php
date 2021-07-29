@@ -92,13 +92,8 @@ if (isset($_GET["pro_id"])) {
             </div>
 
             <br>
-            <div>
-                <label>Photo :</label><br>
-                <input class="form-control" type="text" value="<?=htmlentities($row->pro_photo) ?>" name="photo">
-                <small  class="text-danger"><?=$message_photo?></small >
-            </div>
-
-            <br>
+      
+          
 
 
             <label for="">Produit Bloqué :</label>

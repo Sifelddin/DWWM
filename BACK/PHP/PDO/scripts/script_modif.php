@@ -17,7 +17,7 @@ if(isset($_POST["Enregistrer"])){
     check_error_modif("libelle");
     check_error_modif("prix");
     check_error_modif("stock");
-    check_error_modif("photo");
+    
  
 
     $ref = $_POST["ref"];
@@ -35,7 +35,7 @@ echo  $categorie;
 try {
     $rq = "UPDATE produits JOIN categories ON cat_id = pro_cat_id 
     SET pro_ref=:pro_ref, pro_cat_id=:pro_cat_id , pro_libelle=:pro_libelle, pro_description=:pro_description,
-     pro_prix=:pro_prix, pro_stock=:pro_stock, pro_couleur=:pro_couleur, pro_photo=:pro_photo,pro_d_modif=:pro_d_modif  WHERE pro_id = $id ";
+     pro_prix=:pro_prix, pro_stock=:pro_stock, pro_couleur=:pro_couleur,pro_d_modif=:pro_d_modif  WHERE pro_id = $id ";
     $requete = $db->prepare($rq);
     
 
@@ -47,7 +47,6 @@ $requete->execute([
     "pro_prix" => $prix,
     "pro_stock" => $stock,
     "pro_couleur" => $couleur,
-    "pro_photo" => $photo,
     "pro_d_modif" => date("Y-m-d H:i:s")
 ]);
 
