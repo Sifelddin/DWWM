@@ -66,10 +66,5 @@ try {
 if ($error) {
     echo $error;
 } else {
-
-
-
-
-
   header("Location:../forms/upload_img.php?pro_id=$row->pro_id");
 }
