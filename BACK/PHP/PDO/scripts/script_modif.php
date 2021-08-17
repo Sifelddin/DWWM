@@ -19,7 +19,6 @@ if(isset($_POST["Enregistrer"])){
     check_error_modif("stock");
     
  
-
     $ref = $_POST["ref"];
     $categorie = $_POST["cat_id"];
     $libelle = $_POST["libelle"];

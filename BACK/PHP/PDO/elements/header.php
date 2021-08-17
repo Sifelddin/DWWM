@@ -28,7 +28,7 @@
               <a class="nav-link text-muted" href="../tableau.php">Tableau</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-muted" href="../Contact.php">Contact</a>
+              <a class="nav-link text-muted" href="../Contact.php">s'inscrire</a>
             </li>
           </ul>
           <form action="" method="POST" class="form-inline mt-2 mt-md-0">

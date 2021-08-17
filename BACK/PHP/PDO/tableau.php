@@ -1,4 +1,9 @@
 <?php
+require 'elements/auth.php';
+$_session['connect'] = 1;
+var_dump(is_connected());
+exit;
+header('Location:forms/login.php');
 
 require "./elements/conect_BDD.php";
 require "./elements/header.php";
