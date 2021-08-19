@@ -5,13 +5,16 @@
 
 
     <main class="container">
+        <div class="my-3 d-flex">
+        <p>Si vous avez inscrit avant :
+        <a href="forms/login.php">Sign in</a></p>
+        </div>
+        <h3>Sign up </h3>
+        <form action="./scripts/script_user.php" method="POST">
+
+        <p>* Ces zones sont obligatoires</p>
         
-        
-    <p>* Ces zones sont obligatoires</p>
-    <form action="./scripts/script_user.php" method="POST">
-        
-   
-       <legend class="h3 ">Vos coordonnées</legend>
+       <legend class="h4 ">Vos coordonnées</legend>
        <div class="form-group">
     <label for="name">Votre nom* : </label>
         <input class="form-control" type="text" id="name" name="nom" required> 
@@ -38,7 +41,7 @@
          <input class="form-control" type="password" name="password-confirm" required>
      </div>
    
-   <button class="btn btn-primary mb-4" type="submit" name="submit" value="submit">S'inscrire</button>
+   <button class="btn btn-primary mb-4" type="submit" name="submit" value="submit">Signe up</button>
    
 </form>
 

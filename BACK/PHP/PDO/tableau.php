@@ -1,12 +1,20 @@
 <?php
-require 'elements/auth.php';
-$_session['connect'] = 1;
+require_once 'elements/auth.php';
 var_dump(is_connected());
-exit;
-header('Location:forms/login.php');
+
+
+if (is_connected() === false) {
+  header('Location:sign_up.php');
+  exit;
+}
+if ( $_SESSION['role'] !== 'admin') {
+  header('Location:products.php');
+  exit;
+}
 
 require "./elements/conect_BDD.php";
 require "./elements/header.php";
+
 
 try {
   if (isset($_POST['recherche'])) {
@@ -27,12 +35,25 @@ try {
 <?php if ($error) : ?>
   <?= $error ?>
 <?php else : ?>
-  <div class="container">
 
-    <br>
-    <div id="add" class="text-center"> <a href="./forms/form_ajout.php"><input class="mx-auto px-4 mx-5 btn btn-danger" name="ajouter" value="Ajouter un produit"></a></div>
-    <br>
-    <br>
+
+  <div class="container">
+    <div class = "d-flex justify-content-between py-5 ">
+
+
+      <a href="./forms/form_ajout.php"><input class="mx-auto px-4 mx-5 btn btn-danger" name="ajouter" value="Ajouter un produit"></a>
+     
+      
+      <h4>tous les produits</h4>
+      <form action="" method="POST" class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" name="recherche" placeholder="nom du produit (libellé)" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+              </form>
+    
+     
+    </div>
+
+    
     <?php if (count($objs_dai) === 0) : ?>
 
       <div class="p-5 alert alert-danger text-center">
@@ -67,7 +88,8 @@ try {
                 <td class="align-middle"><img style="max-width: 140px;" class="img-responsive img-fluid" src="./jarditou_photos/<?=$val->pro_id?>.<?=$val->pro_photo ?>" alt="<?=$val->pro_id?>.<?=$val->pro_photo ?>"></td>
                 <td class="align-middle"><?= $val->pro_id ?></td>
                 <td class="align-middle"><?= $val->pro_ref ?></td>
-                <td class="align-middle"><strong><a class="text-danger" href="./forms/details.php?pro_id=<?= $val->pro_id ?>"><?= $val->pro_libelle ?></strong></a></td>
+                <td class="align-middle"><strong>
+                 <a class="text-danger" href= "./forms/details.php?pro_id=<?= $val->pro_id ?>"><?= $val->pro_libelle ?></strong></a></td>
                 <td class="align-middle"><?= $val->pro_prix . " €" ?></td>
                 <td class="align-middle"><?= $val->pro_stock ?></td>
                 <td class="align-middle"><?= $val->pro_couleur ?></td>

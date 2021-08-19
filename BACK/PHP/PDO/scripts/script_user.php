@@ -1,10 +1,10 @@
 <?php
-
+require_once '../elements/auth.php';
+is_connected();
 require '../elements/conect_BDD.php';
 
-
 $nameRegx = '/^[a-zA-Z]+$/';
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if(isset($_POST['submit'])){
   $nom = $_POST["nom"];  
   $prenom = $_POST["prenom"];  
   $email = $_POST["email"]; 
@@ -37,18 +37,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $password_hash = password_hash($password , PASSWORD_DEFAULT);
     }
-
-
-     $req = $db->prepare('INSERT INTO users (nom , prenom, email, mot_de_pass) VALUES (:nom,:prenom,:email,:mot_de_pass)');
-     $req->execute([
-         'nom' => $nom,
-         'prenom' => $prenom,
-         'email' => $email,
-         'mot_de_pass' => $password_hash
-     ]);
-
-
-     header('Location:../Tableau.php');
+    
+    
+    
+    $req = $db->prepare('INSERT INTO users (nom , prenom, email, mot_de_pass) VALUES (:nom,:prenom,:email,:mot_de_pass)');
+    $req->execute([
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'email' => $email,
+        'mot_de_pass' => $password_hash
+    ]);
+    
+    $_SESSION['login'] = $email;
+     header('Location:../Tableau.php?success=signup');
 }
 
 ?>

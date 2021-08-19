@@ -27,7 +27,7 @@ if (isset($_GET["pro_id"])) {
 <br>
     <form action="modif_form.php" method="POST">
         <div class="form-group">
-            <img style="width: 250px;" class="img-responsive img-fluid rounded mx-auto d-block" src="../jarditou_photos/<?=$row->pro_id?>.jpg" alt="">
+            <img style="width: 250px;" class="img-responsive img-fluid rounded mx-auto d-block" src="../jarditou_photos/<?=$row->pro_id?>.<?=$row->pro_photo?>" alt="">
             <div>
                 <label>Référence :</label><br>
                 <input class="form-control" type="text" value="<?= htmlentities($row->pro_ref) ?>" readonly name="ref">

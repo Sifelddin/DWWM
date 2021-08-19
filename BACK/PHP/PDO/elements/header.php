@@ -1,4 +1,13 @@
 
+<?php
+require_once 'auth.php';
+var_dump(is_connected());
+
+date_default_timezone_set("Europe/Paris");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,17 +33,31 @@
             <li class="nav-item active">
               <a class="nav-link text-dark" href="../index.php">Accueil <span class="sr-only">(current)</span></a>
             </li>
+           
             <li class="nav-item">
-              <a class="nav-link text-muted" href="../tableau.php">Tableau</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-muted" href="../Contact.php">s'inscrire</a>
+              <a class="nav-link text-muted" href="../products.php">list-products</a>
             </li>
           </ul>
-          <form action="" method="POST" class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" name="recherche" placeholder="nom du produit (libellé)" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-          </form>
+          <ul class="navbar-nav mr-5">
+            <?php if(is_connected() === true && $_SESSION['role'] == 'admin') :?>
+               <li class="nav-item">
+              <a class="nav-link text-muted" href="../tableau.php">Admin</a>
+            </li>
+              <?php endif ;?> 
+            <?php if(is_connected() === false): ?>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="../forms/login.php">Signe in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="../sign_up.php">Signe up</a>
+          </li>
+          <?php else :?> 
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="../scripts/signout_script.php">Sign out</a>
+          </li>
+          <?php endif ;?> 
+         </ul>
+    
         </div>
       </nav>   
       <img class="img-responsive img-fluid w-100 p-0" src="../jarditou_html_zip/images/promotion.jpg" alt="photo de promotion">
