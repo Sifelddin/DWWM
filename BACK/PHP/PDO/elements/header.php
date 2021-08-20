@@ -20,7 +20,7 @@ date_default_timezone_set("Europe/Paris");
 <body>
    
     <div class="d-lg-flex justify-content-between align-items-center  d-none ">
-        <img  class="w-25 p-2" src="../jarditou_html_zip/images/jarditou_logo.jpg" alt="jarditou_logo" title="jarditou_logo">
+        <img  class="w-25 p-2" src="../jarditou_photos/jarditou_logo.jpg" alt="jarditou_logo" title="jarditou_logo">
         <h1 class="fw-bold h1 display-4 text-end mr-5 "> tout le jardin</h1>
     </div>
     <nav class="navbar navbar-expand-md navbar-light  bg-light">
@@ -60,5 +60,5 @@ date_default_timezone_set("Europe/Paris");
     
         </div>
       </nav>   
-      <img class="img-responsive img-fluid w-100 p-0" src="../jarditou_html_zip/images/promotion.jpg" alt="photo de promotion">
+      <img class="img-responsive img-fluid w-100 p-0" src="../jarditou_photos/promotion.jpg" alt="photo de promotion">
 

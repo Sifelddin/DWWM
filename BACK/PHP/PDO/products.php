@@ -1,7 +1,7 @@
 <?php
-require_once 'elements/auth.php';
-var_dump(is_connected());
-
+//require_once 'elements/auth.php';
+//var_dump(is_connected());
+var_dump(session_id()) ;
 
 
 require "./elements/conect_BDD.php";
@@ -54,14 +54,14 @@ if($error){
         
     <div class="col-sm-5 border border-info my-2 mx-3 ">
       <div class=" d-flex justify-content-between align-items-center my-1 ">
-         <img style="max-width: 150px;" class="img-responsive img-fluid" src="./jarditou_photos/<?=$val->pro_id?>.<?=$val->pro_photo ?>" alt="<?=$val->pro_id?>.<?=$val->pro_photo ?>">
+         <img id="p_img" style="max-width: 150px;" class="img-responsive img-fluid" src="./jarditou_photos/<?=$val->pro_id?>.<?=$val->pro_photo ?>" alt="<?=$val->pro_id?>.<?=$val->pro_photo ?>">
           <div >
         <h5 id="libelle" class="text-centre"><?= $val->pro_libelle ?></h5>
         <br>
-         <p id="prix" class="text-centre"><?= $val->pro_prix . '€' ?></p>
-        <?php if (verify()):?>
+         <p id="prix" class="text-centre"><?= $val->pro_prix ?></p>
+        <?php // if (verify()):?>
          <button id="btn" class="btn btn-outline-success" value="<?=$val->pro_id?>" >Ajouter</button>
-         <?php endif; ?>
+         <?php // endif; ?>
         </div>
       </div>
       <p>discription:<br><small><?=$val->pro_description ?></small></p>
@@ -72,29 +72,20 @@ if($error){
     <?php endif ?>
     
     </div> 
-    <?php if (verify()):?>
+    <?php //if (verify()):?>
     <div id="panier" class="container col-3 border border-info">
         <h5>votre panier:</h5>
         <table class="table table-bordered table-sm">
-          <thead class="bg-light h5 display-5">
-            <tr class="text-center">   
-              <th>quantity</th>   
-              <th>Libellé</th>
-              <th>Prix</th>   
-            </tr>
-          </thead>
+       
           <tbody id="tbody" class="table">
-              <tr id="tr" class="table"></tr>
-        <br>
-        <br>
-        
-        
             </tbody>
-        </table>
+            
+          </table>
+          <p id="total"></p>
         <button id="delete" class="btn btn-outline-danger" value="<?=$val->pro_id?>" >supprimer</button>
 
         </div>
-        <?php endif; ?>
+        <?php //endif; ?>
   </div>
 </div>
 
