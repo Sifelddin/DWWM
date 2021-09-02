@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\map;
+
 date_default_timezone_set("Europe/Paris");
 require 'Agence.class.php';
 
@@ -11,6 +14,7 @@ class Employe extends Agence {
     public $_salaire_brut_annual;
     public $_service;
     public static $liste_employes = [];
+    public $_enfants = [];
    
 
     function __construct($nom,$prenom,$date_embouche,$poste,$salaire_brut_annual,$service)
@@ -120,6 +124,48 @@ class Employe extends Agence {
       return $cout_total;
     }
 
+
+    public function dispose_cheque_vacances()
+    {
+    return $this->annees_dans_entreprise() >= 1 ?  true :  false ; 
+    }
+
+    public function  droit_cheques_noel()
+    {
+       $result = array_filter($this->_enfants, function($var){
+            return $var <= 18 ;
+        });
+        if(count($result) > 0 ){     
+           return $result;
+        }else{
+            return null;
+        }
+    }
+
+    public function dispose_cheques_noel()
+    {  
+        $cheques = [];
+        $enfants = $this->droit_cheques_noel();
+        if($enfants !== null){
+          foreach($enfants as $enfant => $age){
+                if($age > 0 && $age < 10){
+                 $cheques[] = "cheque 20 €"; 
+                }elseif($age > 10 && $age <= 15){
+                    $cheques[] = "cheque 30 €";
+                }elseif($age > 15 && $age <= 18){
+                    $cheques[] = "cheque 50 €";
+                }else{
+                    null;
+                }
+            };      
+          
+        }
+        
+        return $cheques;
+       
+    }
+
+
 }
 
 $hassan = new Employe("hassan","ali","05-05-2018","gérant",30000 ,"administration");
@@ -127,6 +173,7 @@ $sifou = new Employe("sifou","tarek","03-05-2016","comptable",28000,"Comptabilit
 $doe = new Employe("Jhon","Doe","05-05-2015","gérant",25000,"Commercial");
 $salah = new Employe("sallah","saad","06-07-2019","directeur commercial.",31000," commercial");
 $lazhar = new Employe("lazhar","marchi","06-07-2019","agent sécurité",24000,"sécurité");
+$saaid = new Employe("saaid","ghani","06-12-2020","agent sécurité",22000,"sécurité");
 
 Employe::$liste_employes[] = $doe;
 Employe::$liste_employes[] = $hassan;
@@ -134,18 +181,17 @@ Employe::$liste_employes[] = $lazhar;
 Employe::$liste_employes[] = $sifou;
 Employe::$liste_employes[] = $salah;
 
-$hassan = $afpa_Amiens;
 
 
 
 echo "<pre>";
-var_dump($hassan->_agence_restaurant = true);
-var_dump($sifou->_agence_restaurant = false);
-var_dump($doe->_agence_restaurant = true);
-var_dump($salah->_agence_restaurant = false);
-var_dump($lazhar->_agence_restaurant = true);
 
-var_dump( $hassan);
+$hassan->_enfants = [
+    "sami" => 25,
+    "hanan" => 16,
+    "faissal"=> 12
+];
+
 
 echo "</pre>";
 

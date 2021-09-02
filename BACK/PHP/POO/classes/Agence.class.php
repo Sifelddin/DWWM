@@ -20,4 +20,3 @@ class Agence {
 
 $afpa_Amiens = new Agence("AFPA","30 Rue paulainville",80000 ,"Amiens", true);
 
-var_dump($afpa_Amiens);
