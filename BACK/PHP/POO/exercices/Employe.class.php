@@ -27,7 +27,7 @@ class Employe extends Agence {
         $this->_service = $service;
     }
 
-    public  function annees_dans_entreprise()
+    public function annees_dans_entreprise()
     {
       $date_embouche = new DateTime($this->_date_embouche) ; 
       $date_now = new DateTime(); 
