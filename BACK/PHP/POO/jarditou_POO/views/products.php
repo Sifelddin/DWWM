@@ -1,12 +1,16 @@
 <?php 
 
-require_once('../includes/autoLoad.php');
+require_once('../includes/AutoLoad.php');
 require_once('../includes/header.php');
+
+use Controller\Pro_contr;
+
+
+AutoLoad::register();
 
     $self_path = $_SERVER["PHP_SELF"];
     $page = $_GET['page'] ?? 1;
-    $pro_obj = new pro_contr();
-
+    $pro_obj = new Pro_contr();
 
     $count_products = $pro_obj->show_pros_count();
     if(!filter_var($page,FILTER_VALIDATE_INT)){
@@ -30,9 +34,7 @@ require_once('../includes/header.php');
         }
         $offset = $in_page * ($current_page - 1);
         if(isset($_POST['submit'])){
-       
         $pro_libelle = $_POST['recherche'];
-            
         $products = $pro_obj->show_search_pro($pro_libelle,$in_page , $offset);
          }else{
         $products = $pro_obj->show_pros($in_page , $offset);

@@ -1,8 +1,15 @@
 <?php 
 
+
+
 require_once('../includes/autoLoad.php');
 require_once('../includes/header.php');
+use Controller\Form;
 
+$error = null;
+
+AutoLoad::register();
+$form_obj = new Form();
 ?>
 
 <h1>sign up</h1>
@@ -19,14 +26,14 @@ require_once('../includes/header.php');
        <legend class="h4 ">Vos coordonnées</legend>
        <div class="form-group">
     <label>Votre nom* : </label>
-       <?php $nom = new Form('text','nom'); echo $nom->input(); ?>
+       <?= $form_obj->input('text','nom') ?>
         <?php if($error !== null && $error === "nom") :?> 
             <small  class="text-danger">Le nom doit contenir  que des lettres !</small >
       <?php endif; ?>
     </div>
    <div class="form-group">
-    <label for="prénom">Votre prénom* :  </label>
-    <?php $nom = new Form('text','prenom'); echo $nom->input(); ?>
+    <label>Votre prénom* :  </label>
+    <?= $form_obj->input('text','prenom') ?>
         <?php if($error !== null && $error === "prenom") :?> 
             <small  class="text-danger">Le prenom doit contenir  que des lettres !</small >
       <?php endif; ?>
@@ -34,8 +41,8 @@ require_once('../includes/header.php');
 
    
     <div class="form-group">
-        <label for="email" >Email* :</label>
-        <?php $nom = new Form('email','email'); echo $nom->input(); ?>
+        <label>Email* :</label>
+        <?= $form_obj->input('email','email') ?>
         <?php if($error !== null && $error === "email") :?> 
             <small  class="text-danger">Adresse email doit être en bon format!</small >
       <?php endif; ?>
@@ -44,7 +51,7 @@ require_once('../includes/header.php');
 
      <div class="form-group">
          <label>Mot de pass : </label>
-         <?php $nom = new Form('password','password'); echo $nom->input(); ?>
+         <?= $form_obj->input('password','password') ?>
          <?php if($error !== null && $error === "password") :?> 
       <small  class="text-danger"> Mot de pass minimum 8 caractères !</small >
       <?php endif; ?>
@@ -52,13 +59,13 @@ require_once('../includes/header.php');
    
      <div class="form-group">
          <label>Confirmation  (Mot de pass) : </label>
-         <?php $nom = new Form('password','password_confirm'); echo $nom->input(); ?>
+         <?= $form_obj->input('password','pass_confirm') ?>
          <?php if($error !== null && $error === "password-conformation") :?> 
       <small  class="text-danger"> Mot de pass Confirmation !</small >
       <?php endif; ?>
      </div>
    
-   <button class="btn btn-primary mb-4" type="submit" name="submit" value="submit">Signe up</button>
+     <?= $form_obj->button('submit','sign up') ?>
    
 </form>
 
@@ -67,5 +74,6 @@ require_once('../includes/header.php');
 
 
 <?php
+
 require_once('../includes/footer.php');
 ?>

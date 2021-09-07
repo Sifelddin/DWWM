@@ -1,21 +1,18 @@
 <?php
 
+namespace Controller;
 
 class Form {
 
-    public $_input_type;
-    public $_input_name;
-    
-    public function __construct($input_type, $input_name)
-    {
-        $this->_input_name = $input_name;
-        $this->_input_type = $input_type;
-    }
    
 
-    public function input()
+    public function input($type,$name)
     {       
-       return ' <input class="form-control" type="'.$this->input_type .'" name="'.$this->_input_name.'"' ;
+       return '<input class="form-control" type="'.$type.'" name="'.$name.'">' ;
+    }
+    public function button($name,$btn_text)
+    {       
+       return '<button class="btn btn-primary mb-4" type="submit" name="'.$name.'" value="submit">'.$btn_text.'</button>' ;
     }
 
 }

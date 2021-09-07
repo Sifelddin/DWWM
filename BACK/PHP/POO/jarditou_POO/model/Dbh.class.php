@@ -1,6 +1,11 @@
 <?php
 
+namespace Model;
+
+use PDO;
+
 class Dbh {
+  
 
     private $host = 'localhost';
     private $user = 'root';

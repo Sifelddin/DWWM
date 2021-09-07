@@ -38,23 +38,23 @@ date_default_timezone_set("Europe/Paris");
             </li>
           </ul>
           <ul class="navbar-nav mr-5">
-            <?php if(is_connected() === true && $_SESSION['role'] == 'admin') :?>
+            <?php // if(is_connected() === true && $_SESSION['role'] == 'admin') :?>
                <li class="nav-item">
-              <a class="nav-link text-muted" href="tableau.php">Admin</a>
+              <a class="nav-link text-muted" href="admin.php">Admin</a>
             </li>
-              <?php endif ;?> 
-            <?php if(is_connected() === false): ?>
+              <?php // endif ;?> 
+            <?php // if(is_connected() === false): ?>
           <li class="nav-item">
             <a class="nav-link text-muted" href="log_in.php">login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-muted" href="sign_up.php">Signe up</a>
           </li>
-          <?php else :?> 
+          <?php // else :?> 
           <li class="nav-item">
             <a class="nav-link text-muted" href="#">Sign out</a>
           </li>
-          <?php endif ;?> 
+          <?php // endif ;?> 
          </ul>
     
         </div>
