@@ -81,7 +81,7 @@ if(isset($_POST['recherche'])){
 
   <div class="container">
     <div class = "d-flex justify-content-between py-5 ">
-      <a href="./forms/form_ajout.php"><input class="mx-auto px-4 mx-5 btn btn-danger" name="ajouter" value="Ajouter un produit"></a>
+      <a href="form_ajout.php"><input class="mx-auto px-4 mx-5 btn btn-danger" name="ajouter" value="Ajouter un produit"></a>
       <h4>tous les produits</h4>
      <form action="" method="POST" class="form-inline mt-2 mt-md-0">
      <input class="form-control mr-sm-2" type="text" name="recherche" placeholder="nom du produit (libellé)" aria-label="Search">

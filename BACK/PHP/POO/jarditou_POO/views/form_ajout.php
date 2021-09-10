@@ -1,13 +1,34 @@
 <?php 
 
-require_once('../../includes/autoLoad.php');
+require_once('../includes/autoLoad.php');
 AutoLoad::register();
 use Controller\Form;
+use Controller\Cat_cont;
+use Controller\Pro_contr;
+
 $form = new Form;
+$cats = new Cat_cont;
+$all_rows = $cats->show_cats();
+$product = new Pro_contr();
+if(isset($_POST['submit']))
+{
+  $product->setProduct(
+    $_POST["cat_id"],
+   $_POST['ref'],
+  $_POST['libelle'],
+   $_POST['description'],
+  $_POST['prix'],
+   $_POST['stock'],
+   $_POST['couleur'],
+   $_POST['date-Ajout'],
+  $_POST['pro-bloque']
+  );
+
+  header('Location:admin.php');
+}
+
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +73,7 @@ $form = new Form;
 <br><br>
     <h2>formulaire d'ajout d'un produit</h2>
     <br>
-    <form action="../scripts/script_ajout.php" method="POST">
+    <form action="" method="POST">
         <div class="form-group">
 
             <div>
@@ -70,29 +91,23 @@ $form = new Form;
                 <small  class="text-danger"></small >
             </div>
             <br>
-
-
             <div>
                 <label>"pro_libelle"- Nom du produit :</label><br>
                
                 <?= $form->input('text','libelle')?>
                 <small  class="text-danger"></small >
             </div>
-
             <br>
             <div>
                 <label>"pro_description"- Description du produit :</label><br>
                 <textarea class="form-control" name="description" id="" cols=ly></textarea>
             </div>
-
             <br>
             <div>
-                <label>"pro_prix"- Prix :</label><br>
-              
+                <label>"pro_prix"- Prix :</label><br>              
                 <?= $form->input('text','prix')?>
                 <small  class="text-danger"></small >
             </div>
-
             <br>
             <div>
                 <label>"pro_stock"- Nombre d'unités en Stock :</label><br>
@@ -100,41 +115,34 @@ $form = new Form;
                 <?= $form->input('text','stock')?>
                 <small  class="text-danger"></small >
             </div>
-
             <br>
             <div>
                 <label>"pro_couleur"- Couleur :</label><br>
             
                 <?= $form->input('text','couleur')?>
             </div>
-
-            <br>
-           
-
-          
+            <br> 
             <div>
                 <label>"pro_d_ajout"- Date d'ajout :</label><br>
-       
                 <?= $form->input('date','date-Ajout')?>
             </div>
-
             <br>
-
             <div>
                 <label>"pro_bloque" Bloquer le produit à la vente :</label><br>
                 
                 <?= $form->input('number','pro-bloque')?>
             </div>
             <br>
-           
+           <div >
             <?= $form->button('submit','Ajouter')?>
-            <a href="../admin.php"><input class="btn btn-secondary" name="routeur" value="Routeur"></a>
+            <a href="admin.php"><input class="btn btn-secondary"  value="Routeur"></a>
+          </div>
         </div>
     </form>
 </div>
 
 
 <?php
-require_once('../../includes/footer.php');
+require_once('../includes/footer.php');
 
 ?>

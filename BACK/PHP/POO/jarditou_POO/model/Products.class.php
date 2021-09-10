@@ -62,7 +62,7 @@ require_once 'Dbh.class.php';
             'pro_couleur' => $couleur,
             'pro_photo' => $ext_photo,
             'pro_d_ajout' => date("Y-m-d H:i:s"),
-            'pro_d_modif' => NULL,
+            'pro_d_modif' => date("Y-m-d H:i:s"),
             'pro_bloque' => $pro_bloque
         ]);
         }

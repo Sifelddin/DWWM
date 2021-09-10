@@ -16,13 +16,15 @@ class AutoLoad{
     if(strpos($class,"Controller\\") !== false){
        $class = str_replace("Controller\\","",$class);
     }
-    if(strpos($url,'forms') !== false){
-        $path = '../../Controllers/';
-    }
-    // var_dump($path . $class . $extension);
+  
+    // echo($path);
     // echo "<br>";
-    // var_dump($url);
-    require_once  $path . $class . $extension;
+    // echo($class);
+    // echo "<br>";
+    // echo($extension);
+    // echo "<br>";
+    // echo($url);
+    require_once $path . $class . $extension;
 }
 
 

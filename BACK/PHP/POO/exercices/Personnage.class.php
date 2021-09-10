@@ -1,5 +1,7 @@
 <?php
 
+namespace exercice;
+
 class Personnage{
     private $_nom;
     private $_prenom;
