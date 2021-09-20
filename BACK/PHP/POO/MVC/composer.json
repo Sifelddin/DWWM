@@ -1,0 +1,15 @@
+{
+    "name": "80010-13-02/mvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ali-Tarek",
+            "email": "bekhouche3939@gmail.com"
+        }
+    ],
+    "require": {}
+}
