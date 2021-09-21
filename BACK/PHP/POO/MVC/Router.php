@@ -2,18 +2,19 @@
 
 namespace app;
 
-use app\model\DataBase;
+use app\model\ProModel;
 
 class Router
 {
 
     public array $getRoutes = [];
     public array $postRoutes = [];
-    public DataBase $db;
+    public ProModel $db;
 
     public function __construct()
     {
-        $this->db = new DataBase();
+        $this->db = new ProModel();
+       
     }
     public function get($url,$fn)
     {
@@ -46,8 +47,11 @@ class Router
 
 
 
-    public function renderView($view) //products index
+    public function renderView($view, $params = []) //products index
     {
+        foreach ($params as $key => $value) {
+            $$key = $value;
+        }
         ob_start();
         include_once __DIR__."/views/$view.php";
         $content = ob_get_clean();

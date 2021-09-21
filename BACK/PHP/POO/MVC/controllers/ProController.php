@@ -3,13 +3,20 @@
 namespace app\Controllers;
 
 use app\Router;
+use Model\Products;
 
 class ProController{
 
     public static function index(Router $router)
     {
-        var_dump($router->db);
-        $router->renderView('products/index');
+       
+       $products = $router->db->getProducts();
+    
+        $router->renderView('products/index',[
+            'product' => $products
+        ]);
+            
+       
     }
     public static function create()
     {
