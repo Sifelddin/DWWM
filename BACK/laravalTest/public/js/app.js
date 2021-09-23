@@ -2062,7 +2062,11 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-alert('coucou');
+console.log("hello");
+console.log("hello");
+console.log("hello");
+console.log("hello");
+console.log("hjsdlkjflksjdflkjqsdlkfj");
 
 /***/ }),
 

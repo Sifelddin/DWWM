@@ -1,3 +1,9 @@
 require('./bootstrap');
 
-alert('coucou');
+console.log("hello");
+console.log("hello");
+console.log("hello");
+console.log("hello");
+console.log("hjsdlkjflksjdflkjqsdlkfj");
+
+
