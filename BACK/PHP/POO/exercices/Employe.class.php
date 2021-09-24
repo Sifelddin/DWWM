@@ -1,5 +1,7 @@
 <?php
 
+use phpDocumentor\Reflection\Types\Parent_;
+
 use function PHPSTORM_META\map;
 
 date_default_timezone_set("Europe/Paris");
@@ -17,8 +19,10 @@ class Employe extends Agence {
     public $_enfants = [];
    
 
-    function __construct($nom,$prenom,$date_embouche,$poste,$salaire_brut_annual,$service)
+    function __construct($mag_nom, $mag_adresse,$mag_CP, $mag_ville, $mag_restaurant, $nom,$prenom,$date_embouche,$poste,$salaire_brut_annual,$service)
     {
+        parent::__construct($mag_nom, $mag_adresse,  $mag_CP, $mag_ville, $mag_restaurant);
+         
         $this->_nom = $nom;
         $this->_prenom = $prenom;
         $this->_date_embouche = $date_embouche;
@@ -168,19 +172,22 @@ class Employe extends Agence {
 
 }
 
-$hassan = new Employe("hassan","ali","05-05-2018","gérant",30000 ,"administration");
-$sifou = new Employe("sifou","tarek","03-05-2016","comptable",28000,"Comptabilité");
-$doe = new Employe("Jhon","Doe","05-05-2015","gérant",25000,"Commercial");
-$salah = new Employe("sallah","saad","06-07-2019","directeur commercial.",31000," commercial");
-$lazhar = new Employe("lazhar","marchi","06-07-2019","agent sécurité",24000,"sécurité");
-$saaid = new Employe("saaid","ghani","06-12-2020","agent sécurité",22000,"sécurité");
+$hassan = new Employe("AFPA","30 Rue paulainville",80000 ,"Amiens", true,"hassan","ali","05-05-2018","gérant",30000 ,"administration");
+// $sifou = new Employe("sifou","tarek","03-05-2016","comptable",28000,"Comptabilité");
+// $doe = new Employe("Jhon","Doe","05-05-2015","gérant",25000,"Commercial");
+// $salah = new Employe("sallah","saad","06-07-2019","directeur commercial.",31000," commercial");
+// $lazhar = new Employe("lazhar","marchi","06-07-2019","agent sécurité",24000,"sécurité");
+// $saaid = new Employe("saaid","ghani","06-12-2020","agent sécurité",22000,"sécurité");
 
-Employe::$liste_employes[] = $doe;
-Employe::$liste_employes[] = $hassan;
-Employe::$liste_employes[] = $lazhar;
-Employe::$liste_employes[] = $sifou;
-Employe::$liste_employes[] = $salah;
+// Employe::$liste_employes[] = $doe;
+// Employe::$liste_employes[] = $hassan;
+// Employe::$liste_employes[] = $lazhar;
+// Employe::$liste_employes[] = $sifou;
+// Employe::$liste_employes[] = $salah;
 
+echo "<pre>";
+var_dump($hassan);
+echo "</pre>";
 
 
 

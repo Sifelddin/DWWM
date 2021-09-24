@@ -9,7 +9,7 @@
 </head>
 <body>
     @include('assets.navbar')
-    <div class="container mx-auto bg-gray-100">
+    <div class="container mx-auto bg-gray-50">
     @yield('content')
     </div>
 

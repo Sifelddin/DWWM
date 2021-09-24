@@ -7,13 +7,13 @@ class Agence {
     public $_agence_ville;
     public $_agence_restaurant;
 
-    function __construct(string $nom,string $adresse, int $CP,string $ville,bool $restaurant)
+    function __construct(string $mag_nom,string $mag_adresse, int $mag_CP,string $mag_ville,bool $mag_restaurant)
     {
-        $this->_agence_nom = $nom;
-        $this->_agence_adresse = $adresse;
-        $this->_agence_CP = $CP;
-        $this->_agence_ville = $ville;
-        $this->_agence_restaurant = $restaurant;
+        $this->_agence_nom = $mag_nom;
+        $this->_agence_adresse = $mag_adresse;
+        $this->_agence_CP = $mag_CP;
+        $this->_agence_ville = $mag_ville;
+        $this->_agence_restaurant = $mag_restaurant;
     }
 }
 
