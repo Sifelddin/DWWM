@@ -11,6 +11,11 @@
         <span>Aucan post en base de donnée</span>
 @endif
 
-    
-
+<h1>Liste des vidéos </h1>
+<h4 class="m-1">{{ $video->title }}<h4>
+           @forelse ($video->comments as $comment)
+               <span>{{ $comment->content }} | crée le {{ $comment->created_at->format('d/m/Y') }}</span><br>
+               @empty
+                <span>Aucan commentaire pour ce post.</span>
+           @endforelse
 @endsection
